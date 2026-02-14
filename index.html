@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Пожелание</title>
+  <title>Валентин 💘</title>
+
   <style>
     :root { color-scheme: light; }
 
-    body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
+    /* ВЕСЬ ЭКРАН = один background div */
+    .bg{
+      min-height: 100vh;
+      width: 100%;
+      display: grid;
+      place-items: center;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
       /* Купидонский фон */
@@ -20,112 +22,194 @@
         radial-gradient(800px 600px at 80% 30%, rgba(255, 200, 230, 0.60), transparent 55%),
         radial-gradient(900px 700px at 60% 90%, rgba(255, 150, 200, 0.30), transparent 60%),
         linear-gradient(180deg, #ffe7f2 0%, #fff6fb 55%, #ffeef7 100%);
-      padding: 26px;
-      overflow:hidden;
+      padding: 28px;
+      overflow: hidden;
+      position: relative;
     }
 
-    /* Сердечки на фоне */
-    body::before{
+    /* точки-сердечки */
+    .bg::before{
       content:"";
-      position: fixed;
+      position: absolute;
       inset: 0;
       pointer-events:none;
       background-image:
-        radial-gradient(circle at 10% 15%, rgba(255, 90, 160, 0.18) 0 6px, transparent 7px),
-        radial-gradient(circle at 25% 35%, rgba(255, 120, 190, 0.15) 0 5px, transparent 6px),
-        radial-gradient(circle at 70% 20%, rgba(255, 110, 170, 0.14) 0 7px, transparent 8px),
-        radial-gradient(circle at 85% 55%, rgba(255, 120, 190, 0.12) 0 6px, transparent 7px),
-        radial-gradient(circle at 40% 80%, rgba(255, 90, 160, 0.13) 0 7px, transparent 8px);
-      filter: blur(0.2px);
+        radial-gradient(circle at 10% 15%, rgba(255, 90, 160, 0.18) 0 7px, transparent 8px),
+        radial-gradient(circle at 25% 35%, rgba(255, 120, 190, 0.15) 0 6px, transparent 7px),
+        radial-gradient(circle at 70% 20%, rgba(255, 110, 170, 0.14) 0 8px, transparent 9px),
+        radial-gradient(circle at 85% 55%, rgba(255, 120, 190, 0.12) 0 7px, transparent 8px),
+        radial-gradient(circle at 40% 80%, rgba(255, 90, 160, 0.13) 0 8px, transparent 9px);
       opacity: 0.9;
     }
 
-    /* Лёгкие облачка */
-    body::after{
+    /* облачка */
+    .bg::after{
       content:"";
-      position: fixed;
-      inset: -30px;
+      position: absolute;
+      inset: -40px;
       pointer-events:none;
       background:
-        radial-gradient(300px 180px at 15% 25%, rgba(255,255,255,0.85), transparent 70%),
-        radial-gradient(340px 200px at 85% 20%, rgba(255,255,255,0.75), transparent 72%),
-        radial-gradient(360px 220px at 70% 85%, rgba(255,255,255,0.70), transparent 75%),
-        radial-gradient(280px 160px at 25% 80%, rgba(255,255,255,0.60), transparent 70%);
+        radial-gradient(340px 200px at 15% 25%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(380px 220px at 85% 20%, rgba(255,255,255,0.75), transparent 72%),
+        radial-gradient(420px 250px at 70% 85%, rgba(255,255,255,0.70), transparent 75%),
+        radial-gradient(320px 190px at 25% 80%, rgba(255,255,255,0.60), transparent 70%);
       opacity: 0.65;
       filter: blur(1px);
     }
 
     .card{
-      width:min(760px, 100%);
-      background: rgba(255,255,255,0.55);
+      width: min(900px, 100%);
+      background: rgba(255,255,255,0.62);
       border: 1px solid rgba(255, 90, 160, 0.18);
-      border-radius: 26px;
-      box-shadow: 0 20px 55px rgba(255, 70, 150, 0.18);
-      padding: 26px 22px;
+      border-radius: 30px;
+      box-shadow: 0 25px 70px rgba(255, 70, 150, 0.18);
+      padding: 30px 26px;
       position: relative;
-      overflow:hidden;
-      backdrop-filter: blur(10px);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      z-index: 2;
     }
 
+    /* УВЕЛИЧИЛ ТЕКСТ */
     h1{
       margin: 0 0 14px;
-      font-size: 22px;
+      font-size: 34px;
       letter-spacing: .2px;
       color: #b0185b;
-      opacity: .95;
     }
 
-    .text{
-      font-size: 22px;
-      line-height: 1.55;
-      padding: 18px 18px;
+    p{
+      margin: 0 0 18px;
+      font-size: 24px;
+      color: #2a0a1a;
+      opacity: 0.95;
+      line-height: 1.45;
+    }
+
+    .stage{
+      display:none;
+      animation: fade .25s ease;
+    }
+    .stage.active{ display:block; }
+
+    @keyframes fade{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .arena{
+      margin-top: 18px;
+      position: relative;
+      height: 280px;
+      border-radius: 26px;
+      border: 1px dashed rgba(255, 90, 160, 0.25);
+      background: rgba(255,255,255,0.50);
+      overflow:hidden;
+    }
+
+    .btn{
+      border: 1px solid rgba(255, 90, 160, 0.25);
+      background: rgba(255,255,255,0.80);
+      color:#2a0a1a;
+      padding: 16px 20px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.60);
+      cursor:pointer;
+      font-size: 22px;
+      transition: transform .15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+
+    .btnYes{
+      position:absolute;
+      left: 24px;
+      top: 160px;
+    }
+    .btnNo{
+      position:absolute;
+      right: 24px;
+      top: 160px;
+    }
+
+    .finalText{
+      font-size: 28px;
+      line-height: 1.6;
+      padding: 22px 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.75);
       border: 1px dashed rgba(255, 90, 160, 0.22);
       color: #2a0a1a;
-    }
-
-    .heart{
-      position:absolute;
-      inset:auto -70px -75px auto;
-      width: 260px;
-      height: 260px;
-      opacity: .12;
-      transform: rotate(12deg);
-      color: #ff3f9b;
-    }
-
-    .sparkle{
-      position:absolute;
-      left: -40px;
-      top: -40px;
-      width: 180px;
-      height: 180px;
-      opacity: .14;
-      color: #ff4aa1;
-      transform: rotate(-10deg);
+      margin-top: 18px;
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <!-- декоративные сердечки -->
-    <svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 21s-7.5-4.6-10-9.4C.4 8.2 2.3 5 5.8 5c1.9 0 3.4 1 4.2 2.1C10.8 6 12.3 5 14.2 5c3.5 0 5.4 3.2 3.8 6.6C19.5 16.4 12 21 12 21z"/>
-    </svg>
+  <div class="bg">
+    <div class="card">
 
-    <!-- блёстка -->
-    <svg class="sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2l1.2 5.2L18 9l-4.8 1.8L12 16l-1.2-5.2L6 9l4.8-1.8L12 2z"/>
-    </svg>
+      <!-- СТАДИЯ 1 -->
+      <div class="stage active" id="stage1">
+        <h1>💘 Валентинов день</h1>
+        <p>Ты нашла себе партнёра на Валентинов день?</p>
 
-    <h1>💘</h1>
+        <div class="arena" id="arena">
+          <button class="btn btnYes" id="yesBtn">Да 💞</button>
+          <button class="btn btnNo" id="noBtn">Нет 😌</button>
+        </div>
+      </div>
 
-    <div class="text">
-      Если пока нет партнёра — не переживай 🫶<br><br>
-      Твой будущий парень уже идёт к тебе.<br>
-      Просто он ещё не дошёл 😄
+      <!-- СТАДИЯ 2 -->
+      <div class="stage" id="stage2">
+        <h1>💌</h1>
+        <div class="finalText">
+          Если пока нет партнёра — не переживай 🫶<br><br>
+          Твой будущий парень уже идёт к тебе.<br>
+          Просто он ещё не дошёл 😄
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const arena = document.getElementById("arena");
+
+    const stage1 = document.getElementById("stage1");
+    const stage2 = document.getElementById("stage2");
+
+    function showFinal(){
+      stage1.classList.remove("active");
+      stage2.classList.add("active");
+    }
+
+    // НЕТ — показывает финальный текст
+    noBtn.addEventListener("click", () => {
+      showFinal();
+    });
+
+    // ДА — убегает
+    function moveYesButton(){
+      const arenaRect = arena.getBoundingClientRect();
+      const btnRect = yesBtn.getBoundingClientRect();
+
+      const padding = 18;
+      const maxX = arenaRect.width - btnRect.width - padding;
+      const maxY = arenaRect.height - btnRect.height - padding;
+
+      const x = Math.floor(Math.random() * maxX) + padding;
+      const y = Math.floor(Math.random() * maxY) + padding;
+
+      yesBtn.style.left = x + "px";
+      yesBtn.style.top = y + "px";
+    }
+
+    yesBtn.addEventListener("mouseenter", moveYesButton);
+    yesBtn.addEventListener("click", moveYesButton);
+
+    setTimeout(moveYesButton, 200);
+  </script>
 </body>
 </html>
