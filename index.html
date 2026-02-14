@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Пожелание</title>
+  <style>
+    :root { color-scheme: light; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      /* Купидонский фон */
+      background:
+        radial-gradient(900px 600px at 20% 20%, rgba(255, 120, 170, 0.35), transparent 60%),
+        radial-gradient(800px 600px at 80% 30%, rgba(255, 200, 230, 0.60), transparent 55%),
+        radial-gradient(900px 700px at 60% 90%, rgba(255, 150, 200, 0.30), transparent 60%),
+        linear-gradient(180deg, #ffe7f2 0%, #fff6fb 55%, #ffeef7 100%);
+      padding: 26px;
+      overflow:hidden;
+    }
+
+    /* Сердечки на фоне */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(255, 90, 160, 0.18) 0 6px, transparent 7px),
+        radial-gradient(circle at 25% 35%, rgba(255, 120, 190, 0.15) 0 5px, transparent 6px),
+        radial-gradient(circle at 70% 20%, rgba(255, 110, 170, 0.14) 0 7px, transparent 8px),
+        radial-gradient(circle at 85% 55%, rgba(255, 120, 190, 0.12) 0 6px, transparent 7px),
+        radial-gradient(circle at 40% 80%, rgba(255, 90, 160, 0.13) 0 7px, transparent 8px);
+      filter: blur(0.2px);
+      opacity: 0.9;
+    }
+
+    /* Лёгкие облачка */
+    body::after{
+      content:"";
+      position: fixed;
+      inset: -30px;
+      pointer-events:none;
+      background:
+        radial-gradient(300px 180px at 15% 25%, rgba(255,255,255,0.85), transparent 70%),
+        radial-gradient(340px 200px at 85% 20%, rgba(255,255,255,0.75), transparent 72%),
+        radial-gradient(360px 220px at 70% 85%, rgba(255,255,255,0.70), transparent 75%),
+        radial-gradient(280px 160px at 25% 80%, rgba(255,255,255,0.60), transparent 70%);
+      opacity: 0.65;
+      filter: blur(1px);
+    }
+
+    .card{
+      width:min(760px, 100%);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255, 90, 160, 0.18);
+      border-radius: 26px;
+      box-shadow: 0 20px 55px rgba(255, 70, 150, 0.18);
+      padding: 26px 22px;
+      position: relative;
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    h1{
+      margin: 0 0 14px;
+      font-size: 22px;
+      letter-spacing: .2px;
+      color: #b0185b;
+      opacity: .95;
+    }
+
+    .text{
+      font-size: 22px;
+      line-height: 1.55;
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.60);
+      border: 1px dashed rgba(255, 90, 160, 0.22);
+      color: #2a0a1a;
+    }
+
+    .heart{
+      position:absolute;
+      inset:auto -70px -75px auto;
+      width: 260px;
+      height: 260px;
+      opacity: .12;
+      transform: rotate(12deg);
+      color: #ff3f9b;
+    }
+
+    .sparkle{
+      position:absolute;
+      left: -40px;
+      top: -40px;
+      width: 180px;
+      height: 180px;
+      opacity: .14;
+      color: #ff4aa1;
+      transform: rotate(-10deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- декоративные сердечки -->
+    <svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 21s-7.5-4.6-10-9.4C.4 8.2 2.3 5 5.8 5c1.9 0 3.4 1 4.2 2.1C10.8 6 12.3 5 14.2 5c3.5 0 5.4 3.2 3.8 6.6C19.5 16.4 12 21 12 21z"/>
+    </svg>
+
+    <!-- блёстка -->
+    <svg class="sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l1.2 5.2L18 9l-4.8 1.8L12 16l-1.2-5.2L6 9l4.8-1.8L12 2z"/>
+    </svg>
+
+    <h1>💘</h1>
+
+    <div class="text">
+      Если пока нет партнёра — не переживай 🫶<br><br>
+      Твой будущий парень уже идёт к тебе.<br>
+      Просто он ещё не дошёл 😄
+    </div>
+  </div>
+</body>
+</html>
